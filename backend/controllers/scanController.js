@@ -1,4 +1,4 @@
-import { openai } from '../lib/openai.js';
+import { model } from '../lib/gemini.js';
 import { supabase } from '../lib/supabase.js';
 
 export const analyzeText = async (req, res) => {
@@ -16,27 +16,20 @@ You are a cybersecurity expert. Analyze this job offer for scam indicators like:
 - Fake company signals
 - Urgency language
 
-Return JSON:
+Return ONLY a JSON object in this format:
 {
-  "score": number (0-100, where 100 is highly likely to be a scam),
+  "score": number (0-100),
   "reasons": string[],
-  "verdict": string ("Safe" | "Suspicious" | "Scam")
+  "verdict": "Safe" | "Suspicious" | "Scam"
 }
 
 Job Offer Text:
-"""
 ${text}
-"""
     `;
 
-    const response = await openai.chat.completions.create({
-      model: 'gpt-3.5-turbo',
-      messages: [{ role: 'user', content: prompt }],
-      response_format: { type: 'json_object' },
-      temperature: 0.2,
-    });
-
-    const aiResult = JSON.parse(response.choices[0].message.content);
+    const result = await model.generateContent(prompt);
+    const response = await result.response;
+    const aiResult = JSON.parse(response.text());
 
     // Save to Supabase if userId is provided
     if (userId) {
@@ -59,7 +52,7 @@ ${text}
 
     res.json(aiResult);
   } catch (error) {
-    console.error('Analysis error:', error);
-    res.status(500).json({ error: 'Failed to analyze text.' });
+    console.error('Gemini Analysis error:', error);
+    res.status(500).json({ error: 'Failed to analyze text using Gemini.' });
   }
 };

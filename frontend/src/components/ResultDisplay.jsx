@@ -30,7 +30,7 @@ export default function ResultDisplay({ result }) {
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className={`glass-panel p-8 rounded-3xl relative overflow-hidden ${shadowClass}`}
+      className={`glass-panel p-5 sm:p-8 rounded-3xl relative overflow-hidden ${shadowClass}`}
     >
       {/* Decorative background glow */}
       <div className={`absolute top-0 left-0 w-full h-32 bg-gradient-to-b ${gradientClass} opacity-50 pointer-events-none`} />

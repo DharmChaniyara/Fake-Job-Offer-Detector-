@@ -80,25 +80,25 @@ export default function Dashboard({ session }) {
   return (
     <div className="min-h-screen text-slate-100 p-4 md:p-8 font-sans selection:bg-blue-500/30">
       <div className="max-w-6xl mx-auto">
-        <header className="flex justify-between items-center mb-12">
+        <header className="flex flex-col sm:flex-row justify-between items-center mb-8 md:mb-12 gap-6 sm:gap-0">
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center gap-3"
           >
-            <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-2.5 rounded-xl shadow-lg shadow-blue-500/20">
-              <ShieldAlert className="w-7 h-7 text-white" />
+            <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-2 rounded-xl sm:p-2.5 shadow-lg shadow-blue-500/20">
+              <ShieldAlert className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400 tracking-tight">JobGuard AI</h1>
-              <p className="text-xs text-slate-500 font-medium tracking-wider uppercase">Scam Detection Engine</p>
+              <h1 className="text-xl sm:text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400 tracking-tight">JobGuard AI</h1>
+              <p className="text-[10px] sm:text-xs text-slate-500 font-medium tracking-wider uppercase">Scam Detection Engine</p>
             </div>
           </motion.div>
           <motion.button 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             onClick={handleLogout}
-            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white transition-all text-sm font-medium"
+            className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 hover:text-white transition-all text-xs sm:text-sm font-medium w-full sm:w-auto justify-center"
           >
             <LogOut className="w-4 h-4" />
             Sign Out
@@ -147,7 +147,7 @@ export default function Dashboard({ session }) {
                   value={text}
                   onChange={(e) => setText(e.target.value)}
                   placeholder="Paste the job description, email body, or offer letter here..."
-                  className="w-full flex-grow min-h-[300px] bg-slate-950/50 border border-slate-800/80 rounded-2xl p-5 text-slate-300 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 resize-none mb-6 transition-all shadow-inner custom-scrollbar"
+                  className="w-full flex-grow min-h-[200px] sm:min-h-[300px] bg-slate-950/50 border border-slate-800/80 rounded-2xl p-4 sm:p-5 text-slate-300 focus:outline-none focus:border-blue-500/50 focus:ring-1 focus:ring-blue-500/50 resize-none mb-6 transition-all shadow-inner custom-scrollbar"
                 />
 
                 <button

@@ -36,7 +36,7 @@ export default function Auth({ session }) {
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="glass-panel p-8 rounded-2xl w-full max-w-md"
+        className="glass-panel p-6 sm:p-8 rounded-2xl w-full max-w-md"
       >
         <div className="flex flex-col items-center mb-8">
           <div className="w-16 h-16 bg-blue-500/20 rounded-full flex items-center justify-center mb-4">

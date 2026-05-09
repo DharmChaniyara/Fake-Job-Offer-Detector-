@@ -26,6 +26,11 @@ app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
 
+// Catch-all route for debugging
+app.use((req, res) => {
+  res.status(404).send(`Route ${req.url} not found on JobGuard Backend`);
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

@@ -18,6 +18,10 @@ app.use('/api', scanRoutes);
 app.use('/api', pdfRoutes);
 app.use('/api', linkRoutes);
 
+app.get('/', (req, res) => {
+  res.send('JobGuard AI Backend is Running!');
+});
+
 app.get('/health', (req, res) => {
   res.status(200).json({ status: 'ok' });
 });
